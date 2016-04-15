@@ -3,7 +3,7 @@
 <head>
 	<title>Pomodoro Clock</title>
 	<meta charset="UTF-8">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/main.css">
 	<script src="js/jquery.min.js"></script>
 	<script src="js/script.js"></script>
@@ -11,27 +11,32 @@
 <body>
 	<div class="container">
 		<div class="clock">
-			<h2>Pomodoro Clock</h2>
-			<p>Use the " + " and  " - " signs to adjust the session and break times.</p>
-			<p>To start the timer click on the clock.</p>
-			<p>To reset the timer, click on it and adjust and times then click on the timer again.</p>
+			<h2 class="header">Pomodoro Clock</h2>
+			<div class="instructions">
+				<p>Use the " + " and  " - " signs to adjust the session and break times.</p>
+				<p>To start the timer click on the clock.</p>
+				<p>To reset the timer, click on it and adjust and times then click on the timer again.</p>
+			</div>
 			<div class="controls">
 				<div class="session">
 					<h5>Session Length</h5>
-					<button class="plus">+</button>
-					<input type="text" placeholder="25"></input>
-					<button class="minus">-</button>
+					<button class="controller plus">+</button>
+					<input class="time-input" type="text" placeholder="25"></input>
+					<button class="controller minus">-</button>
 				</div>
 				<div class="break">
 					<h5>Break Length</h5>
-					<button class="plus">+</button>
-					<input type="text" placeholder="5"></input>
-					<button class="minus">-</button>
+					<button class="controller plus">+</button>
+					<input class="time-input" type="text" placeholder="5"></input>
+					<button class="controller minus">-</button>
 				</div>					
 			</div>
 			<div class="timer">
-				<h3 class="status">Session</h3>
-				<h3 class="current-time">25:00</h3>
+				<div class="timer-wrap">
+					<br/>
+					<h3 class="status">Session</h3>
+					<h3 class="current-time">25:00</h3>
+				</div>
 			</div>
 		</div>
 		<!-- The footer section, contains the author's information and links to pages. -->

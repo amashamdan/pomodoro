@@ -1,8 +1,79 @@
 body {
 	font-family: 'Open Sans', sans-serif;
+	color: white;
+	background-color: #1c1c1c;
 }
 
 .container {
-	width: 700px;
-	margin: 0 auto;	
+	max-width: 700px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.header {
+	text-align: center;
+}
+
+.instructions {
+	font-size: 0.8em;
+}
+
+.controls {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.session,
+.break {
+	text-align: center;
+	width: 50%;
+}
+
+.controller {
+	width: 25px;
+	height: 25px;
+	border-radius: 12.5px;
+	border: none;
+	outline: none;
+}
+
+.controller:hover {
+	cursor: pointer;
+}
+
+.time-input {
+	width: 30px;
+	height: 23px;
+	border-radius: 5px;
+	text-align: center;
+	border: none;
+}
+
+.timer {
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.timer-wrap {
+	width: 200px;
+	height: 200px;
+	border: 1px solid white;
+	border-radius: 100px;
+	font-size: 1.2em;
+}
+
+.author {
+	font-size: 0.8em;
+	color: gray;
+}
+
+.author p {
+	margin: 2px;	
+}
+
+.author a {
+	color: gray;
 }
