@@ -1,4 +1,5 @@
 body {
+	transition: all 1s ease;
 	font-family: 'Open Sans', sans-serif;
 	color: white;
 	background-color: #1c1c1c;
@@ -71,7 +72,7 @@ body {
 
 .author {
 	font-size: 0.8em;
-	color: gray;
+	color: white;
 }
 
 .author p {
@@ -79,5 +80,5 @@ body {
 }
 
 .author a {
-	color: gray;
+	color: white;
 }
