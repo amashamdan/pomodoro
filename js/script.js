@@ -1,7 +1,8 @@
+// timer needs to be here for scopes.
 var timer;
+var status = "session";
 
 $(document).ready(function() {
-	// timer needs to be here for scopes.
 	$(".timer-wrap").click(function() {
 		clearInterval(timer);
 		startSession();
@@ -27,9 +28,9 @@ function startBreak() {
 	if ($(".break-input").val()){	
 		var minutes = $(".break-input").val();
 	} else {
-		var minutes = 0;
+		var minutes = 5;
 	}
-	var seconds = 5;
+	var seconds = 0;
 	printTime(minutes, seconds);
 	var timer2 = setInterval(function() {
 		var temp = checkTime(minutes, seconds, timer2);
@@ -45,9 +46,17 @@ function checkTime(minutes, seconds, timer) {
 		printTime(minutes, seconds);
 	} else if (seconds === 0 && minutes === 0) {
 		clearInterval(timer);
-		$("body").css({"backgroundColor": "#008B8B"});
-		$(".status").html("Break");
-		startBreak();
+		if (status === "session"){	
+			startBreak();
+			$("body").css({"backgroundColor": "#008B8B"});
+			$(".status").html("Break");
+			status = "break";
+		} else {
+			startSession();
+			$("body").css({"backgroundColor": "#1c1c1c"});
+			$(".status").html("Session");
+			status = "session";
+		}
 	} else {
 		seconds--;
 		printTime(minutes, seconds);
@@ -66,4 +75,3 @@ function printTime(minutes, seconds) {
 		$(".current-time").html(minutes + " : " + seconds);
 	}
 }
-
