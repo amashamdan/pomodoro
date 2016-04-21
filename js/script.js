@@ -7,6 +7,24 @@ $(document).ready(function() {
 		clearInterval(timer);
 		startSession();
 	})
+
+	$(".plus").click(function() {
+		if ($(this).siblings(".time-input").val()) {
+			$(this).siblings(".time-input").val(Number($(this).siblings(".time-input").val()) + 1);
+		} else {
+			var num = $(this).siblings(".time-input").attr("placeholder");
+			$(this).siblings(".time-input").val(Number(num) + 1);
+		}
+	})
+
+	$(".minus").click(function() {
+		if ($(this).siblings(".time-input").val()) {
+			$(this).siblings(".time-input").val(Number($(this).siblings(".time-input").val()) - 1);
+		} else {
+			var num = $(this).siblings(".time-input").attr("placeholder");
+			$(this).siblings(".time-input").val(Number(num) - 1);
+		}
+	})
 })
 
 function startSession() {
