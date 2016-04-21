@@ -1,22 +1,27 @@
+var timer;
+
 $(document).ready(function() {
 	// timer needs to be here for scopes.
-	var timer;
 	$(".timer-wrap").click(function() {
 		clearInterval(timer);
-		if ($(".session-input").val()){
-			var minutes = $(".session-input").val();
-		} else {
-			var minutes = 0;
-		}
-		var seconds = 5;
-		printTime(minutes, seconds);
-		timer = setInterval(function() {
-			var temp = checkTime(minutes, seconds, timer);
-			minutes = temp[0];
-			seconds = temp[1];
-		}, 1000);
+		startSession();
 	})
 })
+
+function startSession() {
+	if ($(".session-input").val()){
+		var minutes = $(".session-input").val();
+	} else {
+		var minutes = 25;
+	}
+	var seconds = 0;
+	printTime(minutes, seconds);
+	timer = setInterval(function() {
+		var temp = checkTime(minutes, seconds, timer);
+		minutes = temp[0];
+		seconds = temp[1];
+	}, 1000);
+}
 
 function startBreak() {
 	if ($(".break-input").val()){	
@@ -25,6 +30,7 @@ function startBreak() {
 		var minutes = 0;
 	}
 	var seconds = 5;
+	printTime(minutes, seconds);
 	var timer2 = setInterval(function() {
 		var temp = checkTime(minutes, seconds, timer2);
 		minutes = temp[0];
