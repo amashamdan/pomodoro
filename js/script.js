@@ -11,6 +11,8 @@ $(document).ready(function() {
 				minutes--;
 				seconds = 59;
 				printTime(minutes, seconds);
+			} else if (seconds === 0 && minutes === 0) {
+				clearInterval(timer);
 			} else {
 				seconds--;
 				printTime(minutes, seconds);
