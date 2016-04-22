@@ -59,11 +59,13 @@ $(document).ready(function() {
 
 	/* Same functionality as plus handler, but value are now decremented. */
 	$(".minus").click(function() {
-		if ($(this).siblings(".time-input").val()) {
-			$(this).siblings(".time-input").val(Math.floor(Number($(this).siblings(".time-input").val())) - 1);
-		} else {
-			var num = $(this).siblings(".time-input").attr("placeholder");
-			$(this).siblings(".time-input").val(Number(num) - 1);
+		if (Number($(this).siblings(".time-input").val()) !== 1) {
+			if ($(this).siblings(".time-input").val()) {
+				$(this).siblings(".time-input").val(Math.floor(Number($(this).siblings(".time-input").val())) - 1);
+			} else {
+				var num = $(this).siblings(".time-input").attr("placeholder");
+				$(this).siblings(".time-input").val(Number(num) - 1);
+			}
 		}
 	})
 
