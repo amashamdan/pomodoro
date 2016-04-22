@@ -43,6 +43,9 @@ $(document).ready(function() {
 		clearInterval(timer2);
 		timerRunning = false;
 		paused = false;
+		status = "session";
+		$("body").css({"backgroundColor": "#1c1c1c"});
+		$(".status").html("Session");
 		if ($(".session-input").val()) {
 			var minutes = $(".session-input").val();
 			printTime(minutes, 0);
