@@ -1,6 +1,4 @@
-// timer needs to be here for scopes.
 var timer;
-var timer2;
 var status = "session";
 var timerRunning = false;
 var paused = false;
@@ -8,9 +6,12 @@ var savedMinutes;
 var savedSeconds;
 
 $(document).ready(function() {
+	if ($(window).width() < $(window).height()) {
+		$(".container").css({"max-width": "1500px"});
+	}
+
 	$(".timer-wrap").click(function() {
 		clearInterval(timer);
-		clearInterval(timer2);
 		if (timerRunning) {
 			paused = true;
 			timerRunning = false;
@@ -40,7 +41,6 @@ $(document).ready(function() {
 
 	$(".reset-button").click(function() {
 		clearInterval(timer);
-		clearInterval(timer2);
 		timerRunning = false;
 		paused = false;
 		status = "session";
@@ -90,8 +90,8 @@ function startBreak() {
 		var seconds = savedSeconds;	
 	}
 	printTime(minutes, seconds);
-	timer2 = setInterval(function() {
-		var temp = checkTime(minutes, seconds, timer2);
+	timer = setInterval(function() {
+		var temp = checkTime(minutes, seconds, timer);
 		minutes = temp[0];
 		savedMinutes = temp[0];
 		seconds = temp[1];
