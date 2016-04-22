@@ -1,11 +1,23 @@
 // timer needs to be here for scopes.
 var timer;
+var timer2;
 var status = "session";
+var timerRunning = false;
+var paused = false;
+var savedMinutes;
+var savedSeconds;
 
 $(document).ready(function() {
 	$(".timer-wrap").click(function() {
 		clearInterval(timer);
-		startSession();
+		clearInterval(timer2);
+		if (timerRunning) {
+			paused = true;
+			timerRunning = false;
+		} else {
+			timerRunning = true;
+			startSession();
+		}
 	})
 
 	$(".plus").click(function() {
@@ -28,32 +40,46 @@ $(document).ready(function() {
 })
 
 function startSession() {
-	if ($(".session-input").val()){
-		var minutes = $(".session-input").val();
+	if (!paused) {
+		if ($(".session-input").val()){
+			var minutes = $(".session-input").val();
+		} else {
+			var minutes = 25;
+		}
+		var seconds = 0;
 	} else {
-		var minutes = 25;
+		var minutes = savedMinutes;
+		var seconds = savedSeconds;
 	}
-	var seconds = 0;
 	printTime(minutes, seconds);
 	timer = setInterval(function() {
 		var temp = checkTime(minutes, seconds, timer);
 		minutes = temp[0];
+		savedMinutes = temp[0];
 		seconds = temp[1];
+		savedSeconds = temp[1];
 	}, 1000);
 }
 
 function startBreak() {
-	if ($(".break-input").val()){	
-		var minutes = $(".break-input").val();
+	if (!paused) {
+		if ($(".break-input").val()){	
+			var minutes = $(".break-input").val();
+		} else {
+			var minutes = 5;
+		}
+		var seconds = 0;
 	} else {
-		var minutes = 5;
+		var minutes = savedMinutes;
+		var seconds = savedSeconds;	
 	}
-	var seconds = 0;
 	printTime(minutes, seconds);
-	var timer2 = setInterval(function() {
+	timer2 = setInterval(function() {
 		var temp = checkTime(minutes, seconds, timer2);
 		minutes = temp[0];
+		savedMinutes = temp[0];
 		seconds = temp[1];
+		savedSeconds = temp[1];
 	}, 1000);
 }
 
@@ -64,6 +90,7 @@ function checkTime(minutes, seconds, timer) {
 		printTime(minutes, seconds);
 	} else if (seconds === 0 && minutes === 0) {
 		clearInterval(timer);
+		paused = false;
 		if (status === "session"){	
 			startBreak();
 			$("body").css({"backgroundColor": "#008B8B"});
