@@ -27,7 +27,29 @@ body {
 .session,
 .break {
 	text-align: center;
-	width: 50%;
+	width: 40%;
+}
+
+.reset {
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.reset-button {
+	width: 100%;
+	border: none;
+	outline: none;
+	height: 30px;
+	background-color: #FF3366;
+	color: white;
+	border-radius: 5px;
+}
+
+.reset-button:hover {
+	cursor: pointer;
 }
 
 .controller {

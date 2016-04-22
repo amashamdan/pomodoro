@@ -37,6 +37,19 @@ $(document).ready(function() {
 			$(this).siblings(".time-input").val(Number(num) - 1);
 		}
 	})
+
+	$(".reset-button").click(function() {
+		clearInterval(timer);
+		clearInterval(timer2);
+		timerRunning = false;
+		paused = false;
+		if ($(".session-input").val()) {
+			var minutes = $(".session-input").val();
+			printTime(minutes, 0);
+		} else {
+			printTime(25, 0);
+		}
+	})
 })
 
 function startSession() {
