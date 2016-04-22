@@ -47,7 +47,8 @@ $(document).ready(function() {
 		/* If the user entered a time in the input field (either fields),
 		that value is incremented by one. */
 		if ($(this).siblings(".time-input").val()) {
-			$(this).siblings(".time-input").val(Number($(this).siblings(".time-input").val()) + 1);
+			/* Math.floor is used in case the user enteres a non-integer. */
+			$(this).siblings(".time-input").val(Math.floor(Number($(this).siblings(".time-input").val())) + 1);
 		/* If no value was entered, the default value which is found in the
 		placeholder attribute is grabbed and incremented by one. */
 		} else {
@@ -59,7 +60,7 @@ $(document).ready(function() {
 	/* Same functionality as plus handler, but value are now decremented. */
 	$(".minus").click(function() {
 		if ($(this).siblings(".time-input").val()) {
-			$(this).siblings(".time-input").val(Number($(this).siblings(".time-input").val()) - 1);
+			$(this).siblings(".time-input").val(Math.floor(Number($(this).siblings(".time-input").val())) - 1);
 		} else {
 			var num = $(this).siblings(".time-input").attr("placeholder");
 			$(this).siblings(".time-input").val(Number(num) - 1);
@@ -78,7 +79,7 @@ $(document).ready(function() {
 		/* If the user has time entered, the timer would reset to that entered 
 		value. */
 		if ($(".session-input").val()) {
-			var minutes = $(".session-input").val();
+			var minutes = Math.floor($(".session-input").val());
 			/* prinTime is the function responsible for displaying time. */
 			printTime(minutes, 0);
 		/* If the user didn't enter a time, the default times are called with
@@ -99,7 +100,7 @@ function startTimer() {
 			/* The session input field is checked for user input. */
 			if ($(".session-input").val()){
 				/* The user input is saved into minutes varialbe. */
-				var minutes = $(".session-input").val();
+				var minutes = Math.floor($(".session-input").val());
 			} else {
 				/* If no user input is found, the timer is set to the default
 				value of 25 minutes. */
@@ -110,7 +111,7 @@ function startTimer() {
 		/* Same happens if the break timer is about to be started. */
 		} else if (status === "break") {
 			if ($(".break-input").val()){	
-				var minutes = $(".break-input").val();
+				var minutes = Math.floor($(".break-input").val());
 			} else {
 				var minutes = 5;
 			}
